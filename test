@@ -1,0 +1,57 @@
+repeat wait() until game:IsLoaded() wait(5)
+local notify = loadstring(game:HttpGet("https://raw.githubusercontent.com/FOXTROXHACKS/UsefullScripts/main/TypeWritter"))()
+
+local LP = game:GetService("Players").LocalPlayer
+local capchagui = LP.PlayerGui.CaptchaGui
+local awardgui = capchagui.Award
+local closeaward = awardgui.Close
+local floatarea = capchagui.Captcha.FloatArea
+                --MouseButton1Click
+                --MouseButton1Down
+local s = Instance.new("Sound")
+s.SoundId = "rbxassetid://216917652"
+s.Parent = game:GetService("SoundService")
+s.Volume = 2
+s.Pitch = 1
+s.Looped = false
+s.archivable = false
+
+
+--local function BubblePop()
+function BubblePop()
+    print("Executed.")
+    if capchagui.Enabled == true then
+        wait(1)
+        for i,bubble in ipairs(floatarea:GetChildren()) do
+                if bubble.Name == "FloatBox" and bubble.Visible == true then
+                    wait(1)
+                    firesignal(bubble.MouseButton1Click)
+                    warn("-----> Popped Bubble <-----")
+                    notify("<font color=\"rgb(235, 146, 240)\">Popped</font>\n<font size=\"15\">a Bubble</font>", 3)
+                    wait(3)
+                    if awardgui.Visible == true and capchagui.Enabled == true then
+                        firesignal(closeaward.MouseButton1Down)
+                        warn("-----> CLOSED REWARD <-----")
+                        wait(0.2)
+                        s:Play()
+                        notify("Bubbles have been " .. "<font color=\"rgb(235, 146, 240)\">Bypassed</font>\n<font size=\"15\"></font>", 3)
+                    end
+                end
+        end
+    end
+end
+
+notify("BubblePopper script loaded\nby " .. "<font color=\"rgb(255, 0, 0)\">Al3xander#0007</font>\n<font size=\"15\"></font>",2)
+wait(1)
+warn("----->LOADED FUNCTION<-----")
+wait(1)
+warn("----->STARTING LOOP<-----")
+wait(1)
+print("----->by Al3xander#0007<-----")
+return BubblePop
+
+--[[wait(0.5)
+while wait(1) do
+BubblePop()
+end
+]]
